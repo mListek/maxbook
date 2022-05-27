@@ -1,0 +1,66 @@
+<template>
+  <div class="container mobile--width">
+    <div class="cart__header">
+      <h1 class="cart__title--large">
+          Your Shopping Cart
+      </h1>
+      <lightning-icon icon-name="utility:cart" size="large" alternative-text="Cart"></lightning-icon>
+    </div>
+    <hr class="cart__line--bold">
+
+    <!-- Simple -->
+    <template if:false={booksInCart}>
+      <div class="cart__message">
+        <p class="cart__message--white">Your Shopping Cart is empty...</p>
+      </div>
+    </template>
+    <template if:true={booksInCart}>
+      <div class="cart__main mobile--flex">
+        <div class="cart__body">
+          <template for:each={booksInCart} for:item="book">
+            <div key={book.Id} class="book__tile">
+              <div class="book__detail--img">
+                <img src={book.coverImage} alt="Book Cover" slot="media" class="cover__image" />
+              </div>
+              <div class="book__detail--wide">
+                <a href={book.detailsLink}>
+                  <p class="book__link--underline">{book.title}</p>
+                </a>
+              </div>
+              <div class="vertical__border--small"></div>
+              <div class="book__detail">
+                <p class="book__detail--small">Price {book.price} zł</p>
+              </div>
+              <div class="book__detail">
+                <p class="book__detail--small">x</p>
+              </div>
+              <div class="book__detail">
+                <p class="book__detail--small">{book.quantity}</p>
+              </div>
+              <div class="book__detail">
+                <p class="book__detail--small">=</p>
+              </div>
+              <div class="book__detail">
+                <p class="book__detail--large">{book.sumPrice} zł</p>
+              </div>
+            </div>
+            <hr key={book.Id}>
+          </template>
+        </div>
+        <div class="vertical__border--large"></div>
+        <div class="cart__footer">
+          <div class="cart__summary">
+            <h1 class="cart__summary--large">TOTAL:</h1>
+            <p class="cart__summary--small">{totalCost} zł</p>
+          </div>
+          <div class="cart__buttons">
+            <lightning-button variant="destructive" class="cart__button" label="Clear Cart" title="Clear Cart" onclick={handleClearClick}></lightning-button>
+            <template if:false={isGuestUser}>
+              <lightning-button variant="success" class="cart__button" label="Place Order" title="Place Order" onclick={handleOrderClick}></lightning-button>
+            </template>
+          </div>
+        </div>
+      </div>
+    </template>
+  </div>
+</template>

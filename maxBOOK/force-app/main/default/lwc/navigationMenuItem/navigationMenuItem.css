@@ -1,0 +1,21 @@
+a {
+  display: inline-block;
+  position: relative;
+  padding: 1em;
+  margin: 1em;
+  font-weight: bold;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+.a__link {
+  color: white;
+  transition: transform .2s;
+}
+
+.a__link:hover {
+  color: #F4D8AE;
+  transform: scale(1.2);
+}

@@ -1,0 +1,29 @@
+.footer__container {
+  background-color: #3C4959;
+  box-shadow: 0 0 17px 0 #3C4959;
+  border: 1px solid #CCCCCC;
+  border-radius: .5rem;
+  display: flex;
+  align-items: center;
+}
+
+.footer__text--white {
+  font-family: Garamond, sans-serif;
+  font-weight: bold;
+  color: white;
+  font-size: large;
+}
+
+.footer__button--dark {
+  border: 1px solid #3C4959;
+  border-radius: .5rem;
+  background-color: #555a66;
+  transition: transform 0.2s;
+  padding: 5px 25px;
+}
+
+.footer__button--dark:hover {
+  cursor: pointer;
+  background-color: #272a2e;
+  transform: scale(1.1);
+}

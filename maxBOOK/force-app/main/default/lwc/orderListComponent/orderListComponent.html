@@ -1,0 +1,104 @@
+<template>
+  <div class="container mobile--width">
+    <template if:true={errors}>
+      <div>
+        An error occurred while loading orders
+      </div>
+    </template>
+    <lightning-card variant="Narrow">
+      <h1 slot="title" class="card__title--large">Current Orders</h1>
+      <lightning-layout multiple-rows>
+        <template if:true={currentOrders} for:each={currentOrders} for:item="currentOrder">
+          <lightning-layout-item key={currentOrder.Id} class="layout__item" padding="around-small">
+            <div>
+              <div class="order__container mobile--flex">
+                <div class="order__container--details">
+                  <p>Order Number: {currentOrder.Name}</p>
+                  <p>
+                    <span>Order Date: </span>
+                    <lightning-formatted-date-time
+                      value={currentOrder.Order_Date__c}
+                      year="numeric"
+                      month="numeric"
+                      day="numeric"
+                      hour="2-digit"
+                      minute="2-digit"
+                    ></lightning-formatted-date-time>
+                  </p>
+                </div>
+                <div class="order__container--button">
+                  <lightning-button variant="neutral" label="Details" title="Details" onclick={handleOrderClick} value={currentOrder.Id}></lightning-button>
+                </div>
+              </div>
+              <div>
+                <p>Order Status: {currentOrder.Status__c}</p>
+                <p class="mobile--disabled">
+                  <lightning-progress-indicator current-step={currentOrder.Status__c} type="path" variant="base">
+                    <lightning-progress-step label="New" value="New" class="order__step"></lightning-progress-step>
+                    <lightning-progress-step label="In-Progress" value="In-Progress" class="order__step"></lightning-progress-step>
+                    <lightning-progress-step label="Completed" value="Completed" class="order__step"></lightning-progress-step>
+                    <lightning-progress-step label="Canceled" value="Canceled" class="order__step order__step--canceled"></lightning-progress-step>
+                  </lightning-progress-indicator>
+                </p>
+              </div>
+            </div>
+          </lightning-layout-item>  
+        </template>
+      </lightning-layout>
+      <template if:false={hasCurrentResults}>
+        <div>
+          You don't have any active orders...
+        </div>
+      </template>
+    </lightning-card>
+
+    <hr>
+
+    <lightning-card variant="Narrow">
+      <h1 slot="title" class="card__title--large">Past Orders</h1>
+      <lightning-layout multiple-rows>
+        <template if:true={pastOrders} for:each={pastOrders} for:item="pastOrder">
+          <lightning-layout-item key={pastOrder.Id} class="layout__item" padding="around-small">
+            <div>
+              <div class="order__container mobile--flex">
+                <div class="order__container--details">
+                  <p>Order Number: {pastOrder.Name}</p>
+                  <p>
+                    <span>Order Date: </span>
+                    <lightning-formatted-date-time
+                      value={pastOrder.Order_Date__c}
+                      year="numeric"
+                      month="numeric"
+                      day="numeric"
+                      hour="2-digit"
+                      minute="2-digit"
+                    ></lightning-formatted-date-time>
+                  </p>
+                </div>
+                <div class="order__container--button">
+                  <lightning-button variant="neutral" label="Details" title="Details" onclick={handleOrderClick} value={pastOrder.Id}></lightning-button>
+                </div>
+              </div>
+              <div>
+                <p>Order Status: {pastOrder.Status__c}</p>
+                <p class="mobile--disabled">
+                  <lightning-progress-indicator current-step={pastOrder.Status__c} type="path" variant="base">
+                    <lightning-progress-step label="New" value="New" class="order__step"></lightning-progress-step>
+                    <lightning-progress-step label="In-Progress" value="In-Progress" class="order__step"></lightning-progress-step>
+                    <lightning-progress-step label="Completed" value="Completed" class="order__step"></lightning-progress-step>
+                    <lightning-progress-step label="Canceled" value="Canceled" class="order__step order__step--canceled"></lightning-progress-step>
+                  </lightning-progress-indicator>
+                </p>
+              </div>
+            </div>
+          </lightning-layout-item>  
+        </template>
+      </lightning-layout>
+      <template if:false={hasCurrentResults}>
+        <div>
+          You don't have any past orders...
+        </div>
+      </template>
+    </lightning-card>
+  </div>
+</template>

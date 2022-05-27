@@ -1,0 +1,39 @@
+<template>
+  <template if:true={__bookDetails}>
+    <div class="slds-var-p-around_large details">
+      <div class="details__cover">
+        <img src={__bookDetails.Cover_Image__c} class="details__image" alt="Cover Image" />
+      </div>
+      <div>
+        <div class="slds-var-p-around_large">
+          <p><b>Title:</b> {__bookDetails.Name}</p>
+          <p><b>Author:</b> {__bookDetails.Author__c}</p>
+          <p><b>Price:</b> {__formattedPrice} zł</p>
+          <p><b>ISBN:</b> {__bookDetails.ISBN__c}</p>
+          <p><b>Category:</b> {__bookDetails.Category__c}</p>
+          <p>Only {__bookDetails.Quantity__c} books left in stock</p>
+          <p><b>Release date:</b> {__bookDetails.Release_Date__c}</p>
+          <p><b>Publisher:</b> {__bookDetails.Publisher__c}</p>
+        </div>
+        <template if:true={bookInStock}>
+          <div class="details__buttons">
+            <div class="details__input">
+              <lightning-button-icon icon-name="utility:dash" variant="border" alternative-text="Minus" title="Minus" disabled={isMinusDisabled} onclick={handleMinusClick}></lightning-button-icon>
+              <input type="number" placeholder={quantity} class="details__input--quantity" value={quantity} onchange={handleInputChange}></input>
+              <lightning-button-icon icon-name="utility:add" variant="border" alternative-text="Plus" title="Plus" disabled={isPlusDisabled} onclick={handlePlusClick}></lightning-button-icon>
+            </div>
+            <div class="details__buttons--submit">
+              <lightning-button variant="brand" label="Add to cart" title="Add to cart" icon-name="utility:cart" onclick={handleAddToCartClick}></lightning-button>
+              <h2 class="details__buttons--price">Current Price: <strong>{currentPrice} zł</strong></h2>
+            </div>
+          </div>
+        </template>
+      </div>
+    </div>
+    <div class="slds-var-p-around_small description">
+      <h4><b>Description:</b></h4>
+      <hr/>
+      <p>{__bookDetails.Description__c}</p>
+    </div>
+  </template>
+</template>
