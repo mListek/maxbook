@@ -1,0 +1,40 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input { 
+  text-align: center; 
+}
+
+.details {
+  display: flex;
+}
+
+.details__image {
+  width: 300px;
+}
+
+.details__input {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin: 10px;
+  margin-left: 50px;
+}
+
+.details__input--quantity {
+  width: 40px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.details__buttons--submit {
+  display: inline-block;
+  margin-left: 50px;
+}
+
+.details__buttons--price {
+  margin-top: 25px;
+}

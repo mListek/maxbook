@@ -1,0 +1,22 @@
+<template>
+  <div class="container">
+    <template if:false={isBookAlreadyInCart}>
+      <div class="quantity__setter">
+        <lightning-button-icon icon-name="utility:dash" size="medium" variant="border" alternative-text="Minus" title="Minus" disabled={isMinusDisabled} onclick={handleMinusClick}><label>minus</label></lightning-button-icon>
+        <input disabled type="number" placeholder={quantity} class="details__input--quantity" value={quantity}></input>
+        <lightning-button-icon icon-name="utility:add" size="medium" variant="border" alternative-text="Plus" title="Plus" disabled={isPlusDisabled} onclick={handlePlusClick}><label>plus</label></lightning-button-icon>
+      </div>
+      <div class="quantity__button">
+        <lightning-button variant="brand" label="Add to cart" title="Add to cart" icon-name="utility:cart" onclick={handleAddToCartClick}></lightning-button>
+      </div>
+      <div class="quantity__footer">
+        <h2>Current Price: <strong>{currentPrice} zł</strong></h2>
+      </div>
+    </template>
+    <template if:true={isBookAlreadyInCart}>
+      <div>
+        <p>This Book is already in Cart!</p>
+      </div>
+    </template>
+  </div>
+</template>

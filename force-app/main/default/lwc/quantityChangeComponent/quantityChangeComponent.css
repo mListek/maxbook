@@ -1,0 +1,36 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.container {
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 0.5rem;
+  border: 1px solid white;
+  margin: 20px auto;
+  background-color: #3C4959;
+}
+
+.quantity__setter {
+  display: flex;
+  margin: 10px;
+}
+
+.details__input--quantity {
+  text-align: center;
+  color: black;
+  width: 40px;
+  margin: 0 5px;
+}
+
+.quantity__button {
+  margin: 10px;
+}
+
+.quantity__footer {
+  margin: 10px;
+}

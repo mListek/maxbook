@@ -1,0 +1,96 @@
+.container {
+  width: 50%;
+  border-radius: 0.5rem;
+  border: 1px solid white;
+  background-color: #555a66;
+  margin: 80px auto;
+}
+
+.image__container {
+  display: flex;
+}
+
+.register__image {
+  border-radius: 0.5rem;
+  margin: 25px auto;
+  width: 250px;
+}
+
+hr {
+  border-top: 3px solid #CCCCCC;
+  width: 90%;
+  margin: 5px auto;
+}
+
+.form {
+  margin: 10px;
+}
+
+.form__header {
+  margin: 10px;
+}
+
+.form__header--big {
+  text-align: center;
+  font-size: 30px;
+  font-family: Garamond, sans-serif;
+}
+
+.form__body {
+  padding: 10px;
+}
+
+.form__element {
+  width: 40%;
+  margin: auto;
+}
+
+.form__input--dark {
+  --sds-c-input-color-background: #3C4959;
+  --sds-c-input-color-background-focus: #555a66;
+  --sds-c-input-color-border: black;
+  --sds-c-input-color-border-focus: #A1A1A6;
+  --sds-c-input-radius-border: 1rem;
+  --sds-c-input-shadow: 0 0 10px 0 #3C4959;
+  --slds-c-input-shadow-focus: 0 0 17px 0 #3C4959;
+}
+
+.form__footer {
+  width: 40%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.form__button {
+  margin:10px;
+}
+
+.form__button--wide {
+  border-radius: 0.5rem;
+}
+
+.form__link {
+  margin: 10px auto;
+}
+
+.form__link--white {
+  color: white;
+  transition: color 0.5s;
+}
+
+.form__link--white:hover {
+  text-decoration: underline;
+  color: #F4D8AE;
+}
+
+@media screen and (max-width: 600px) {
+  .form__element--mobile {
+    width: 100% !important;
+  }
+
+  .mobile--width {
+    width: 80vw !important;
+  }
+}

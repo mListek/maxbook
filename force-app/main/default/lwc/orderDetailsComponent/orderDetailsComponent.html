@@ -1,0 +1,46 @@
+<template>
+  <div class="container mobile--width">
+    <div class="order__header">
+      <h1 class="order__title--large">
+          Order Details
+      </h1>
+      <lightning-icon icon-name="utility:fulfillment_order" size="large" alternative-text="Order"></lightning-icon>
+    </div>
+    <hr class="order__line--bold">
+    <template if:true={orderBooks}>
+      <div class="order__main mobile--flex">
+        <div class="order__body">
+          <template for:each={orderBooks} for:item="book" for:index="index">
+            <div key={book.Id} class="book__tile mobile--flex">
+              <div class="book__detail--img">
+                <img src={book.Book__r.Cover_Image__c} alt="Book Cover" slot="media" class="cover__image" />
+              </div>
+              <div class="book__detail--wide">
+                <p class="book__link--large">{book.Book__r.Name}</p>
+              </div>
+              <div class="vertical__border--small"></div>
+              <div class="book__detail">
+                <p class="book__detail--small">Price: {book.Book__r.Price__c} zł</p>
+              </div>
+              <div class="vertical__border--small"></div>
+              <div class="book__detail">
+                <p class="book__detail--small">Quantity: {book.Quantity__c}</p>
+              </div>
+            </div>
+            <hr key={book.Id}>
+          </template>
+        </div>
+        <div class="vertical__border--large"></div>
+        <div class="order__footer">
+          <div class="order__summary">
+            <h1 class="order__summary--large">TOTAL:</h1>
+            <p class="order__summary--small">{totalPrice} zł</p>
+          </div>
+        </div>
+      </div>
+    </template>
+    <template if:false={orderBooks}>
+      <p>No books to display...</p>
+    </template>
+  </div>
+</template>

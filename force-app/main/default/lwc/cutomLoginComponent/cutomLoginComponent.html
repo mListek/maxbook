@@ -1,0 +1,64 @@
+<template>
+    <div class="container mobile--width">
+        <div class="image__container">
+            <img src="https://i.imgur.com/ejCWY7C.png" alt="Logo Image" class="register__image" />
+        </div>
+        <hr>
+        <div class="form">
+            <div class="form__header">
+                <p class="form__header--big">
+                    Login to Your MAXBOOK Account
+                </p>
+            </div>
+
+            <div class="form__body">
+                <div class="form__element form__element--mobile">
+                    <div class="form__input--dark">
+                        <lightning-input
+                            type="email"
+                            variant="standard"
+                            name="email"
+                            label="Email"
+                            placeholder="type here..."
+                            value={email}
+                            onchange={handleEmailChange}
+                            required>
+                        </lightning-input>
+                    </div>
+                </div>
+
+                <div class="form__element form__element--mobile">
+                    <div class="form__input--dark">
+                        <lightning-input
+                            type="password"
+                            variant="standard"
+                            name="password"
+                            label="Password"
+                            placeholder="type here..."
+                            value={password}
+                            onchange={handlePasswordChange}
+                            required>
+                        </lightning-input>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form__footer">
+                <div class="form__button">
+                    <button
+                        type="button"
+                        title="Login"
+                        class="slds-button slds-button_neutral slds-button_stretch form__button--wide"
+                        onclick={handleLogin}
+                    >
+                        <label>Login</label>
+                    </button>
+                </div>
+                <hr>
+                <div class="form__link">
+                    <a href="/s/SelfRegister" class="form__link--white">Create a new account here</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

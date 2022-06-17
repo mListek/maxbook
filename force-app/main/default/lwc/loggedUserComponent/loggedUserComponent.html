@@ -1,0 +1,12 @@
+<template>
+  <template if:true={isGuestUser}>
+    <div class="welcome__container" onclick={handleLoginClick}>
+      <span class="welcome__span--white">Login to Access your account</span>
+    </div>
+  </template>
+  <template if:false={isGuestUser}>
+    <div class="welcome__container" onclick={handleDetailsClick}>
+      <span class="welcome__span--white">Welcome {username} </span>
+    </div>
+  </template>
+</template>
