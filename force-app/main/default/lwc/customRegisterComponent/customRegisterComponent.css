@@ -85,8 +85,13 @@ hr {
   color: #F4D8AE;
 }
 
-.error__span--red {
+.form__error--red {
   color: rgb(255, 73, 73);
+  text-align: center;
+}
+
+.pointer:hover {
+  cursor: pointer;
 }
 
 @media screen and (max-width: 600px) {

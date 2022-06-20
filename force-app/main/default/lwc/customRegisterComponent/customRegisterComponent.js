@@ -29,17 +29,18 @@ export default class CustomRegisterComponent extends NavigationMixin(LightningEl
               password: this.password, confirmPassword: this.confirmPassword
             })
               .then((result) => {
+                console.log('result: ', result);
                 if (result) {
                   window.open(result, "_self");
                 }
               })
               .catch((error) => {
-                console.log('error:', error.body.message);
+                this.userError = error.body.message;
               });
           }
         })
         .catch((error) => {
-          console.log('error: ', error.body.message);
+          console.log('outer error: ', error.body.message);
         })
         .finally(() => {
           this.showSpinner = false;
