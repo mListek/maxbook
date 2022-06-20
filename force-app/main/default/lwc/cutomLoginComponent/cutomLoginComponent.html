@@ -41,6 +41,12 @@
             </lightning-input>
           </div>
         </div>
+
+        <template if:true={userError}>
+          <p class="form__error--red">
+            {userError}
+          </p>
+        </template>
       </div>
 
       <div class="form__footer">
@@ -50,7 +56,7 @@
             title="Login"
             class="slds-button slds-button_neutral slds-button_stretch form__button--wide"
             onclick={handleLogin}>
-              <label>Login</label>
+              <label class="pointer">Login</label>
           </button>
         </div>
         <hr>

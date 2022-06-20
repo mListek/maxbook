@@ -85,6 +85,15 @@ hr {
   color: #F4D8AE;
 }
 
+.form__error--red {
+  color: rgb(255, 73, 73);
+  text-align: center;
+}
+
+.pointer:hover {
+  cursor: pointer;
+}
+
 @media screen and (max-width: 600px) {
   .form__element--mobile {
     width: 100% !important;

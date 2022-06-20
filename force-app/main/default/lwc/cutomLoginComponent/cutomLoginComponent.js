@@ -5,6 +5,7 @@ export default class CutomLoginComponent extends LightningElement {
 
   email;
   password;
+  userError;
 
   handleEmailChange(event) {
     this.email = event.target.value;
@@ -25,7 +26,7 @@ export default class CutomLoginComponent extends LightningElement {
           }
         })
         .catch((error) => {
-          window.console.log('error', error);
+          this.userError = error;
         });
     }
   }
