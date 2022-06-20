@@ -1,69 +1,71 @@
 <template>
-    <div class="container mobile--width">
-        <template if:true={showSpinner}>
-            <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
-        </template>
+  <div class="container mobile--width">
+    <template if:true={showSpinner}>
+      <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+    </template>
 
-        <div class="image__container">
-            <img src="https://i.imgur.com/ejCWY7C.png" alt="Logo Image" class="register__image" />
+    <div class="image__container">
+      <img src="https://i.imgur.com/ejCWY7C.png" alt="Logo Image" class="register__image" />
+    </div>
+    <hr>
+    <div class="form">
+      <div class="form__header">
+        <p class="form__header--big">
+          Create Your MAXBOOK Account
+        </p>
+      </div>
+
+      <div class="form__body">
+        <div class="form__element form__element--mobile">
+          <div class="form__input--dark">
+            <lightning-input type="text" variant="standard" name="firstName" label="First Name"
+              placeholder="type here..." value={firstName} onchange={handleFirstNameChange} required></lightning-input>
+          </div>
+        </div>
+        <div class="form__element form__element--mobile">
+          <div class="form__input--dark">
+            <lightning-input type="text" variant="standard" name="lastName" label="Last Name" placeholder="type here..."
+              value={lastName} onchange={handleLastNameChange} required></lightning-input>
+          </div>
+        </div>
+        <div class="form__element form__element--mobile">
+          <div class="form__input--dark">
+            <lightning-input type="email" variant="standard" name="email" label="Email" placeholder="type here..."
+              value={email} onchange={handleEmailChange} required></lightning-input>
+            <template if:true={userError}>
+              <p>
+                <span class="error__span--red">{userError}</span>
+              </p>
+            </template>
+          </div>
+        </div>
+        <div class="form__element form__element--mobile">
+          <div class="form__input--dark">
+            <lightning-input type="password" variant="standard" name="password" label="Password"
+              placeholder="type here..." value={password} onchange={handlePasswordChange} required></lightning-input>
+          </div>
+        </div>
+        <div class="form__element form__element--mobile">
+          <div class="form__input--dark">
+            <lightning-input type="password" variant="standard" name="confirmPassword" label="Confirm Password"
+              placeholder="type here..." value={confirmPassword} onchange={handleConfirmPasswordChange} required>
+            </lightning-input>
+          </div>
+        </div>
+      </div>
+
+      <div class="form__footer">
+        <div class="form__button form__element--mobile">
+          <button type="button" title="Sign Up"
+            class="slds-button slds-button_neutral slds-button_stretch form__button--wide" onclick={handleRegister}>
+            <label>Sign Up</label>
+          </button>
         </div>
         <hr>
-        <div class="form">
-            <div class="form__header">
-                <p class="form__header--big">
-                    Create Your MAXBOOK Account
-                </p>
-            </div>
-
-            <div class="form__body">
-                <div class="form__element form__element--mobile">
-                    <div class="form__input--dark">
-                        <lightning-input type="text" variant="standard" name="firstName" label="First Name" placeholder="type here..." value={firstName} onchange={handleFirstNameChange} required></lightning-input>
-                    </div>
-                </div>
-                <div class="form__element form__element--mobile">
-                    <div class="form__input--dark">
-                        <lightning-input type="text" variant="standard" name="lastName" label="Last Name" placeholder="type here..." value={lastName} onchange={handleLastNameChange} required></lightning-input>
-                    </div>
-                </div>
-                <div class="form__element form__element--mobile">
-                    <div class="form__input--dark">
-                        <lightning-input type="email" variant="standard" name="email" label="Email" placeholder="type here..." value={email} onchange={handleEmailChange} required></lightning-input>
-                        <template if:true={userError}>
-                            <p>
-                                <span>{userError}</span>
-                            </p>
-                        </template>
-                    </div>
-                </div>
-                <div class="form__element form__element--mobile">
-                    <div class="form__input--dark">
-                        <lightning-input type="password" variant="standard" name="password" label="Password" placeholder="type here..." value={password} onchange={handlePasswordChange} required></lightning-input>
-                    </div>
-                </div>
-                <div class="form__element form__element--mobile">
-                    <div class="form__input--dark">
-                        <lightning-input type="password" variant="standard" name="confirmPassword" label="Confirm Password" placeholder="type here..." value={confirmPassword} onchange={handleConfirmPasswordChange} required></lightning-input>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form__footer">
-                <div class="form__button">
-                    <button
-                        type="button"
-                        title="Sign Up"
-                        class="slds-button slds-button_neutral slds-button_stretch form__button--wide"
-                        onclick={handleRegister}
-                    >
-                        <label>Sign Up</label>
-                    </button>
-                </div>
-                <hr>
-                <div class="form__link">
-                    <a href="/s/login" class="form__link--white">Login to your existing account here</a>
-                </div>
-            </div>
+        <div class="form__link">
+          <a href="/s/login" class="form__link--white">Login to your existing account here</a>
         </div>
+      </div>
     </div>
+  </div>
 </template>

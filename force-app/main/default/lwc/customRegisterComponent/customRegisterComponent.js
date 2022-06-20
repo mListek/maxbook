@@ -4,79 +4,71 @@ import registerUser from '@salesforce/apex/CustomAuthController.registerUser';
 import { NavigationMixin } from 'lightning/navigation';
 
 export default class CustomRegisterComponent extends NavigationMixin(LightningElement) {
-    firstName = null;
-    lastName = null;
-    email = null;
-    password = null;
-    confirmPassword = null;
-    showSpinner = false;
-    userError;
+  firstName = '';
+  lastName = '';
+  email = '';
+  password = '';
+  confirmPassword = '';
+  showSpinner = false;
+  userError;
 
-    handleRegister(event){
-        if(this.firstName && this.lastName && this.email && this.password && this.confirmPassword){
-            
-            this.showSpinner = true;
-          
-            event.preventDefault();
+  handleRegister(event) {
+    if (this.firstName && this.lastName && this.email && this.password && this.confirmPassword) {
 
-            userAlreadyExists({ email: this.email })
-            .then((result) => {
-              
-                if(result != null && result != undefined && result == true){
+      this.showSpinner = true;
 
-                    this.userError = 'User with this email already exists';
+      event.preventDefault();
 
-                    this.showSpinner = false;
-
-                } else {
-
-                    registerUser({ firstName: this.firstName, lastName: this.lastName, email: this.email,
-                        password: this.password, confirmPassword: this.confirmPassword})
-                    .then((result) => {
-                        if(result){
-                            window.open(result, "_self");
-                        }
-                        this.showSpinner = false;
-                    })
-                    .catch((error) => {
-          
-                        console.log('error:',error.body.message);
-          
-                        this.showSpinner = false;        
-                    });
-                }
+      userAlreadyExists({ email: this.email })
+        .then((result) => {
+          if (result) {
+            this.userError = 'User with this email already exists';
+          } else {
+            registerUser({
+              firstName: this.firstName, lastName: this.lastName, email: this.email,
+              password: this.password, confirmPassword: this.confirmPassword
             })
-            .catch((error) => {
-                  
-                console.log('error: ', error.body.message);
-
-                this.showSpinner = false;
-            });
-        }
+              .then((result) => {
+                if (result) {
+                  window.open(result, "_self");
+                }
+              })
+              .catch((error) => {
+                console.log('error:', error.body.message);
+              });
+          }
+        })
+        .catch((error) => {
+          console.log('error: ', error.body.message);
+        })
+        .finally(() => {
+          this.showSpinner = false;
+        });
     }
+  }
 
-    handleFirstNameChange(event){
+  handleFirstNameChange(event) {
 
-        this.firstName = event.target.value;
-    }
+    this.firstName = event.target.value;
+  }
 
-    handleLastNameChange(event){
+  handleLastNameChange(event) {
 
-        this.lastName = event.target.value;
-    }
+    this.lastName = event.target.value;
+  }
 
-    handleEmailChange(event) {
-        
-        this.email = event.target.value;
-    }
+  handleEmailChange(event) {
 
-    handlePasswordChange(event){
+    this.email = event.target.value;
+  }
 
-        this.password = event.target.value;
-    }
+  handlePasswordChange(event) {
 
-    handleConfirmPasswordChange(event){
+    this.password = event.target.value;
+  }
 
-        this.confirmPassword = event.target.value;
-    }
+  handleConfirmPasswordChange(event) {
+
+    this.confirmPassword = event.target.value;
+  }
 }

@@ -41,7 +41,7 @@ hr {
 }
 
 .form__element {
-  width: 40%;
+  width: 50%;
   margin: auto;
 }
 
@@ -83,6 +83,10 @@ hr {
 .form__link--white:hover {
   text-decoration: underline;
   color: #F4D8AE;
+}
+
+.error__span--red {
+  color: rgb(255, 73, 73);
 }
 
 @media screen and (max-width: 600px) {
