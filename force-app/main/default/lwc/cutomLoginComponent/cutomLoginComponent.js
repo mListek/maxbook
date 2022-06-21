@@ -26,7 +26,8 @@ export default class CutomLoginComponent extends LightningElement {
           }
         })
         .catch((error) => {
-          this.userError = error;
+          console.log(error);
+          this.userError = 'Incorrect login or password';
         });
     }
   }
