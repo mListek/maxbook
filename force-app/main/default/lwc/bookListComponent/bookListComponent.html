@@ -27,6 +27,13 @@
               <template if:true={chosenCategory}>
                 <lightning-badge class="category__badge--cancel" label={chosenCategory} icon-name="utility:close" onclick={handleClearCategory}></lightning-badge>
               </template>
+              <lightning-combobox
+                name="orderBy"
+                label="Sort Books"
+                value={orderBy}
+                placeholder="Select Progress"
+                options={sortOptions}
+                onchange={handleSortingChange} ></lightning-combobox>
             </div>
           </div>
           <lightning-layout class="books__layout mobile--width" multiple-rows="true" pull-to-boundary="small">
@@ -50,7 +57,7 @@
         <template if:true={books.error}>
           <div class="error">
             <p>An error occurred while loading the book list</p>
-            <p>{books.error}</p>
+            <p>{books.error.body.message}</p>
           </div>
         </template>
       </div>

@@ -7,6 +7,13 @@ const categories = ['Adventure', 'Art', 'Children\'s',
                     'History', 'Other', 'Romance',
                     'Science Fiction', 'Thriller', 'Travel'];
 
+const sortOptions = [
+  { label: 'Title', value: 'Name DESC' },
+  { label: 'Popularity', value: 'Sales_Record__c DESC' },
+  { label: 'Lowest Price', value: 'Price__c ASC' },
+  { label: 'Highest Price', value: 'Price__c DESC' }
+];
+
 
 export default class BookListComponent extends NavigationMixin(LightningElement) {
 
@@ -14,8 +21,10 @@ export default class BookListComponent extends NavigationMixin(LightningElement)
   chosenCategory = '';
   categories = categories;
   visibleBooks;
+  orderBy = 'Name DESC';
+  sortOptions = sortOptions;
 
-  @wire(searchBooks, {searchTerm: '$searchTerm', category: '$chosenCategory'})
+  @wire(searchBooks, {searchTerm: '$searchTerm', category: '$chosenCategory', orderBy: '$orderBy'})
   books;
 
   handleSearchTermChange(event) {
@@ -58,5 +67,9 @@ export default class BookListComponent extends NavigationMixin(LightningElement)
 
   updateBookHandler(event) {
     this.visibleBooks = [...event.detail.records];
+  }
+
+  handleSortingChange(event) {
+    this.orderBy = event.detail.value;
   }
 }
