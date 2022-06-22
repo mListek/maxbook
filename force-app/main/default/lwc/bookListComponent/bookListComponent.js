@@ -13,6 +13,7 @@ export default class BookListComponent extends NavigationMixin(LightningElement)
   searchTerm = '';
   chosenCategory = '';
   categories = categories;
+  visibleBooks;
 
   @wire(searchBooks, {searchTerm: '$searchTerm', category: '$chosenCategory'})
   books;
@@ -53,5 +54,9 @@ export default class BookListComponent extends NavigationMixin(LightningElement)
 
   handleClearCategory() {
     this.chosenCategory = '';
+  }
+
+  updateBookHandler(event) {
+    this.visibleBooks = [...event.detail.records];
   }
 }

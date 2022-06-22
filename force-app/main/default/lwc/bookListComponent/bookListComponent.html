@@ -9,8 +9,9 @@
           <hr key={category}>
         </template>
       </div>
+
       <div class="book__list">
-        <template if:true={books.data}>
+        <template if:true={visibleBooks}>
           <div class="container__search">
             <div class="search">
               <lightning-input type="search"
@@ -29,7 +30,7 @@
             </div>
           </div>
           <lightning-layout class="books__layout mobile--width" multiple-rows="true" pull-to-boundary="small">
-            <template for:each={books.data} for:item="book">
+            <template for:each={visibleBooks} for:item="book">
               <lightning-layout-item key={book.Id} size="12" padding="around-small" small-device-size="12" medium-device-size="6" large-device-size="3" >
                 <c-book-tile book={book} onbookview={handleBookView}></c-book-tile>
               </lightning-layout-item>
@@ -41,7 +42,10 @@
               <p>We did not find any results...</p>
             </div>
           </template>
-        </template>  
+        </template>
+        <div slot="footer" class="slds-var-m-vertical_medium">
+          <c-pagination records={books.data} onupdate={updateBookHandler}></c-pagination>
+        </div>
         <!-- Errors while loading -->
         <template if:true={books.error}>
           <div class="error">
