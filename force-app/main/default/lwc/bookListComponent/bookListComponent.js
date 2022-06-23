@@ -37,7 +37,7 @@ export default class BookListComponent extends NavigationMixin(LightningElement)
   }
 
   get hasResults() {
-    return (this.books.length > 0);
+    return (this.visibleBooks.length > 0);
   }
 
   handleBookView(event) {
