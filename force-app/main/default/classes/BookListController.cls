@@ -28,7 +28,7 @@ public without sharing class BookListController {
 
         Integer count = 0;
 
-        while (topBookList.size() < 4) {
+        while (topBookList.size() < 6) {
             count = Math.floor(Math.random() * bookList.size()).intValue();
             topBookList.add(bookList.remove(count));
         }
