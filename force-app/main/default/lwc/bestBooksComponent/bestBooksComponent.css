@@ -1,14 +1,16 @@
 .container {
-  width: 85%;
+  width: fit-content;
   margin: 5px auto;
   display: flex;
   justify-content: center;
+  align-items: center;
   border-radius: 10rem;
   background-color: #A1A1A6;
 }
 
 .books__layout {
   display: flex;
+  justify-content: center;
 }
 
 @media screen and (max-width: 600px) {
