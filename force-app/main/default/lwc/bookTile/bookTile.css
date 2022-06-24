@@ -7,11 +7,13 @@
   justify-content: space-between;
   align-items: center;
   transition: background-color 1s;
+  width: 250px;
 }
 
 .book__tile:hover {
   background-color: #484d57;
   box-shadow: 0 0 24px 0 #555a66;
+  cursor: pointer;
 }
 
 .book__tile:hover .book__image {
@@ -23,7 +25,6 @@
   height: 200px;
   width: 200px;
   display: flex;
-  border: 1px solid pink;
 }
 
 .book__image {
