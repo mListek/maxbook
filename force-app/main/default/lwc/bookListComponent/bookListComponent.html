@@ -27,14 +27,15 @@
               <template if:true={chosenCategory}>
                 <lightning-badge class="category__badge--cancel" label={chosenCategory} icon-name="utility:close" onclick={handleClearCategory}></lightning-badge>
               </template>
-              <lightning-combobox
-                name="orderBy"
-                label="Sort Books"
-                value={orderBy}
-                placeholder="Select Progress"
-                options={sortOptions}
-                onchange={handleSortingChange} ></lightning-combobox>
             </div>
+            <lightning-combobox
+              name="orderBy"
+              label="Sort Books"
+              value={orderBy}
+              placeholder="Select Progress"
+              options={sortOptions}
+              onchange={handleSortingChange}>
+            </lightning-combobox>
           </div>
           <lightning-layout class="books__layout mobile--width" multiple-rows="true" pull-to-boundary="small">
             <template for:each={visibleBooks} for:item="book">
