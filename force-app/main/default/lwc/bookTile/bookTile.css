@@ -56,6 +56,7 @@ hr {
   text-overflow: ellipsis;
   font-size: large;
   height: 2.5em;
+  color: white;
 }
 
 .book__title--bold:hover {
@@ -66,6 +67,7 @@ hr {
 .book__subdetails {
   display: flex;
   justify-content: space-between;
+  color: white;
 }
 
 .book__author--small {
