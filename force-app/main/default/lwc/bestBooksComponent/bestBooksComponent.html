@@ -2,7 +2,7 @@
   <lightning-card>
     <div class="container mobile--width">
       <template if:true={currentBooks}>
-        <lightning-button-icon icon-name="utility:jump_to_left" size="large" variant="bare" alternative-text="Back" title="Back" onclick={handleBack}></lightning-button-icon>
+        <lightning-button-icon icon-name="utility:jump_to_left" size="large" variant="bare" class="nav__button--white" alternative-text="Back" title="Back" onclick={handleBack}></lightning-button-icon>
         <lightning-layout class="books__layout mobile--width mobile--flex" pull-to-boundary="small">
           <template for:each={currentBooks} for:item="book">
             <lightning-layout-item key={book.Id} size="12" padding="around-small" small-device-size="12" medium-device-size="4" large-device-size="4" >
@@ -10,7 +10,7 @@
             </lightning-layout-item>
           </template>
         </lightning-layout>
-        <lightning-button-icon icon-name="utility:jump_to_right" size="large" variant="bare" alternative-text="Back" title="Back" onclick={handleForward}></lightning-button-icon>
+        <lightning-button-icon icon-name="utility:jump_to_right" size="large" variant="bare" class="nav__button--white" alternative-text="Back" title="Back" onclick={handleForward}></lightning-button-icon>
       </template>
       <!-- Errors while loading -->
       <template if:true={error}>

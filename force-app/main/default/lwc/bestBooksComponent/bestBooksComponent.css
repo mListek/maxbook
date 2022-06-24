@@ -13,6 +13,10 @@
   justify-content: center;
 }
 
+.nav__button--white {
+  margin: auto 50px;
+}
+
 @media screen and (max-width: 600px) {
   .mobile--flex {
     flex-direction: column !important;
