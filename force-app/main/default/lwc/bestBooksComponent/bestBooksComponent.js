@@ -8,6 +8,7 @@ export default class BookListComponent extends NavigationMixin(LightningElement)
   error;
   currentBooks = [];
   currentStartIndex = 0;
+  interval;
 
   connectedCallback() {
     this.getBooks();
@@ -19,13 +20,23 @@ export default class BookListComponent extends NavigationMixin(LightningElement)
       this.books = result;
       this.currentBooks = this.books.slice(this.currentStartIndex, this.currentStartIndex + 3);
       
-      setInterval(() => {
+      this.interval = setInterval(() => {
         this.handleForward();
       }, 4000);
 
     }).catch((err) => {
       this.error = err.body.message;
     });
+  }
+
+  handleMouseEnter() {
+    clearInterval(this.interval);
+  }
+
+  handleMouseLeave() {
+    this.interval = setInterval(() => {
+      this.handleForward();
+    }, 4000);
   }
 
   handleBack() {

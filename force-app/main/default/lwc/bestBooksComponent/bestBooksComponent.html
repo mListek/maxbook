@@ -1,6 +1,6 @@
 <template>
   <lightning-card>
-    <div class="container mobile--width">
+    <div class="container mobile--width" onmouseenter={handleMouseEnter} onmouseleave={handleMouseLeave}>
       <template if:true={currentBooks}>
         <lightning-button-icon icon-name="utility:jump_to_left" size="large" variant="bare" class="nav__button--white" alternative-text="Back" title="Back" onclick={handleBack}></lightning-button-icon>
         <lightning-layout class="books__layout mobile--width mobile--flex" pull-to-boundary="small">
