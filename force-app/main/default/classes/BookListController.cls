@@ -6,7 +6,7 @@ public without sharing class BookListController {
         List<Book__c> bookList = new List<Book__c>();
 
         String query = 
-            'SELECT Id, Name, ISBN__c, Price__c, Author__c, ' +
+            'SELECT Id, Name, ISBN__c, Price__c, Author__c, Sales_Record__c, ' +
             'Category__c, Cover_Image__c, Description__c, ' +
             'isAvailable__c, Quantity__c, Release_Date__c ' +
             'FROM Book__c ' +
@@ -42,7 +42,7 @@ public without sharing class BookListController {
         List<Book__c> bookList = new List<Book__c>();
 
         String query = 
-            'SELECT Id, Name, ISBN__c, Price__c, Author__c, ' +
+            'SELECT Id, Name, ISBN__c, Price__c, Author__c, Sales_Record__c, ' +
             'Category__c, Cover_Image__c, Description__c, ' +
             'isAvailable__c, Quantity__c, Release_Date__c ' +
             'FROM Book__c ' +
@@ -61,7 +61,6 @@ public without sharing class BookListController {
         List<Book__c> bookList = new List<Book__c>();
 
         searchTerm = searchTerm.trim();
-        category = category.trim();
 
         if (category != '') {
             return getCategoryBooks(category, orderBy);
@@ -73,15 +72,14 @@ public without sharing class BookListController {
 
         searchTerm = '%' + searchTerm + '%';
 
-        String query =
-            'SELECT Id, Name, ISBN__c, Price__c, Author__c, Sales_Record__c ' +
+        String query = 
+            'SELECT Id, Name, ISBN__c, Price__c, Author__c, Sales_Record__c, ' +
             'Category__c, Cover_Image__c, Description__c, ' +
             'isAvailable__c, Quantity__c, Release_Date__c ' +
             'FROM Book__c ' +
-            'WHERE Name LIKE :searchTerm ' +
-            'WITH SECURITY_ENFORCED ';
-        
-        query += 'ORDER BY ' + orderBy;
+            'WHERE Name LIKE :searchTerm ' + 
+            'WITH SECURITY_ENFORCED ' +
+            'ORDER BY ' + orderBy;
 
         bookList = Database.query(query);
             

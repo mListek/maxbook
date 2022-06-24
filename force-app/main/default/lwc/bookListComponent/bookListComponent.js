@@ -8,7 +8,7 @@ const categories = ['Adventure', 'Art', 'Children\'s',
                     'Science Fiction', 'Thriller', 'Travel'];
 
 const sortOptions = [
-  { label: 'Title', value: 'Name DESC' },
+  { label: 'Title', value: 'Name ASC' },
   { label: 'Popularity', value: 'Sales_Record__c DESC' },
   { label: 'Lowest Price', value: 'Price__c ASC' },
   { label: 'Highest Price', value: 'Price__c DESC' }
@@ -21,7 +21,7 @@ export default class BookListComponent extends NavigationMixin(LightningElement)
   chosenCategory = '';
   categories = categories;
   visibleBooks;
-  orderBy = 'Name DESC';
+  orderBy = 'Name ASC';
   sortOptions = sortOptions;
 
   @wire(searchBooks, {searchTerm: '$searchTerm', category: '$chosenCategory', orderBy: '$orderBy'})
