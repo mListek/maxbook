@@ -35,4 +35,25 @@ public without sharing class BookListController {
             throw new AuraHandledException('error occured while getting books: ' + e.getMessage());
         }
     }
+
+    @AuraEnabled(cacheable=true)
+    public static List<Book__c> getTopBooks(){
+        
+        List<Book__c> topBookList = new List<Book__c>();
+        List<Book__c> bookList = [
+            SELECT Id, Name, ISBN__c, Price__c, Author__c, Sales_Record__c,
+            Category__c, Cover_Image__c, Description__c,
+            isAvailable__c, Quantity__c, Release_Date__c
+            FROM Book__c
+        ];
+
+        Integer count = 0;
+
+        while (topBookList.size() < 6) {
+            count = Math.floor(Math.random() * bookList.size()).intValue();
+            topBookList.add(bookList.remove(count));
+        }
+        
+        return topBookList;
+    }
 }
