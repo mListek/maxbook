@@ -36,6 +36,12 @@ hr {
   font-family: Garamond, sans-serif;
 }
 
+.form__header--small {
+  text-align: center;
+  font-size: 16px;
+  font-family: Garamond, sans-serif;
+}
+
 .form__body {
   padding: 10px;
 }
