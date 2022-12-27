@@ -1,6 +1,6 @@
 import { LightningElement, wire } from 'lwc';
 import { NavigationMixin } from 'lightning/navigation';
-import searchBooks from '@salesforce/apex/BookListController.searchBooks';
+import getBooks from '@salesforce/apex/BookListController.getBooks';
 
 const categories = ['Adventure', 'Art', 'Children\'s',
                     'Cooking', 'Fantasy', 'Health',
@@ -8,9 +8,9 @@ const categories = ['Adventure', 'Art', 'Children\'s',
                     'Science Fiction', 'Thriller', 'Travel'];
 
 const sortOptions = [
-  { label: 'Title', value: 'Name ASC' },
+  { label: 'Title', value: 'Name' },
   { label: 'Popularity', value: 'Sales_Record__c DESC' },
-  { label: 'Lowest Price', value: 'Price__c ASC' },
+  { label: 'Lowest Price', value: 'Price__c' },
   { label: 'Highest Price', value: 'Price__c DESC' }
 ];
 
@@ -21,10 +21,10 @@ export default class BookListComponent extends NavigationMixin(LightningElement)
   chosenCategory = '';
   categories = categories;
   visibleBooks;
-  orderBy = 'Name ASC';
+  orderBy = 'Name';
   sortOptions = sortOptions;
 
-  @wire(searchBooks, {searchTerm: '$searchTerm', category: '$chosenCategory', orderBy: '$orderBy'})
+  @wire(getBooks, {searchTerm: '$searchTerm', category: '$chosenCategory', orderBy: '$orderBy'})
   books;
 
   handleSearchTermChange(event) {
